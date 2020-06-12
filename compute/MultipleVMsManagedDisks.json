@@ -91,17 +91,17 @@
       }
     },
     "subnet3Prefix": {
-      "defaultValue": "10.0.253.0/27",
+      "defaultValue": "10.0.2.0/24",
       "type": "String",
       "metadata": {
-        "description": "Bastion Subnet Prefix"
+        "description": "Subnet 3 Prefix"
       }
     },
     "subnet3Name": {
-      "defaultValue": "AzureBastionSubnet",
+      "defaultValue": "Subnet3",
       "type": "String",
       "metadata": {
-        "description": "Subnet for Azure Bastion"
+        "description": "Subnet 3 Name"
       }
     },
     "virtualMachineCount": {
@@ -215,8 +215,6 @@
       "sku": {
         "name": "Standard_LRS"
       },
-      "dependsOn": [
-      ],
       "tags": {
         "displayName": "Diagnostic Storage Account"
       },
