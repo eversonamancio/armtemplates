@@ -173,6 +173,7 @@
   },
   "resources": [
     {
+      "condition": "[equals(parameters('newOrExisting'), 'new')]",
       "name": "[variables('diagnosticStorageAccountName')]",
       "type": "Microsoft.Storage/storageAccounts",
       "location": "[parameters('location')]",
