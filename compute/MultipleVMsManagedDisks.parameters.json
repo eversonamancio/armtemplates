@@ -1,0 +1,59 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vaultName": {
+            "value": "labshared"
+        },
+        "secretName": {
+            "value": "vmAdminPassword"
+        },
+        "vaultResourceGroupName": {
+            "value": "labsharedrg"
+        },
+        "virtualMachineAdminUserName": {
+            "value": "evaman"
+        },
+        "vnetName": {
+            "value": "vsu-hub"
+        },
+        "subnet1Name": {
+            "value": "prod"
+        },
+        "subnet1Prefix": {
+            "value": "10.0.0.0/24"
+        },
+        "subnet2Name": {
+            "value": "dev"
+        },
+        "subnet2Prefix": {
+            "value": "10.0.1.0/24"
+        },
+        "virtualMachineAdminPassword": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/abc7067d-3ac0-4d25-8b32-6fc2201dcc0d/resourcegroups/labsharedrg/providers/Microsoft.KeyVault/vaults/labshared"
+                },
+                "secretName": "vmAdminPassword"
+            }
+        },
+        "virtualMachineNamePrefix": {
+            "value": "vsu-vm0"
+        },
+        "virtualMachineCount": {
+            "value": 5
+        },
+        "virtualMachineSize": {
+            "value": "Standard_DS2_v2"
+        },
+        "operatingSystem": {
+            "value": "2019-Datacenter"
+        },
+        "availabilitySetName": {
+            "value": "as-srv"
+        },
+        "newOrExisting": {
+            "value": "new"
+        }
+    }
+}
