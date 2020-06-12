@@ -173,41 +173,6 @@
   },
   "resources": [
     {
-      "condition": "[equals(parameters('newOrExisting'),'new')]",
-      "type": "Microsoft.Network/virtualNetworks",
-      "apiVersion": "2019-12-01",
-      "name": "[parameters('vnetName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "addressSpace": {
-          "addressPrefixes": [
-            "[parameters('vnetAddressPrefix')]"
-          ]
-        },
-        "subnets": [
-          {
-            "name": "[parameters('subnet1Name')]",
-            "properties": {
-              "addressPrefix": "[parameters('subnet1Prefix')]"
-            }
-          },
-          {
-            "name": "[parameters('subnet2Name')]",
-            "properties": {
-              "addressPrefix": "[parameters('subnet2Prefix')]"
-            }
-          },
-          {
-            "name": "[parameters('subnet3Name')]",
-            "properties": {
-              "addressPrefix": "[parameters('subnet3Prefix')]"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "condition": "[equals(parameters('newOrExisting'), 'new')]",
       "name": "[variables('diagnosticStorageAccountName')]",
       "type": "Microsoft.Storage/storageAccounts",
       "location": "[parameters('location')]",
