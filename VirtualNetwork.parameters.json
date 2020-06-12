@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnetName": {
+            "value": "vsu-hub"
+        },
+        "subnet1Name": {
+            "value": "prod"
+        },
+        "subnet1Prefix": {
+            "value": "10.0.0.0/24"
+        },
+        "subnet2Name": {
+            "value": "dev"
+        },
+        "subnet2Prefix": {
+            "value": "10.0.1.0/24"
+        },
+        "bastionSubnetPrefix": {
+            "value": "10.0.253.0/27"
+        },
+        "bastionHostName": {
+            "value": "vsu-abh01"
+        },
+        "newOrExisting": {
+            "value": "new"
+        }
+    }
+}
