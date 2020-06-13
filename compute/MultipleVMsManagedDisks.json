@@ -203,6 +203,11 @@
       "name": "[concat(parameters('virtualMachineNamePrefix'), copyIndex(1))]",
       "apiVersion": "2019-07-01",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts/', variables('diagnosticStorageAccountName'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1'))]"
+      ],
       "copy": {
         "name": "VMcopy",
         "count": "[parameters('virtualMachineCount')]"
