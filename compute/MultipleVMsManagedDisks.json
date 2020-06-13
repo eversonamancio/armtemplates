@@ -173,6 +173,7 @@
   },
   "resources": [
     {
+      "condition": "[equals(parameters('newOrExisting'), 'new')]",
       "name": "[variables('diagnosticStorageAccountName')]",
       "type": "Microsoft.Storage/storageAccounts",
       "location": "[parameters('location')]",
@@ -183,9 +184,10 @@
       "tags": {
         "displayName": "Diagnostic Storage Account"
       },
-      "kind": "Storage"
+      "kind": "StorageV2"
     },
     {
+      "condition": "[equals(parameters('newOrExisting'), 'new')]",
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[parameters('availabilitySetName')]",
       "apiVersion": "2019-07-01",
@@ -203,11 +205,6 @@
       "name": "[concat(parameters('virtualMachineNamePrefix'), copyIndex(1))]",
       "apiVersion": "2019-07-01",
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts/', variables('diagnosticStorageAccountName'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1'))]"
-      ],
       "copy": {
         "name": "VMcopy",
         "count": "[parameters('virtualMachineCount')]"
@@ -258,7 +255,12 @@
             "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagnosticStorageAccountName')), '2016-01-01').primaryEndpoints.blob]"
           }
         }
-      }
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('diagnosticStorageAccountName'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1'))]"
+      ]
     },
     {
       "type": "Microsoft.Network/networkInterfaces",
@@ -286,10 +288,7 @@
           ]
         },
         "enableIPForwarding": false
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks', concat(parameters('vnetName')))]"
-      ]
+      }
     }
   ],
   "outputs": {
