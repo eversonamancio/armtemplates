@@ -258,12 +258,7 @@
             "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagnosticStorageAccountName')), '2016-01-01').primaryEndpoints.blob]"
           }
         }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts/', variables('diagnosticStorageAccountName'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1'))]"
-      ]
+      }
     },
     {
       "type": "Microsoft.Network/networkInterfaces",
