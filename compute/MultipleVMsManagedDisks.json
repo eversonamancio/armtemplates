@@ -173,7 +173,6 @@
   },
   "resources": [
     {
-      "condition": "[equals(parameters('newOrExisting'), 'new')]",
       "name": "[variables('diagnosticStorageAccountName')]",
       "type": "Microsoft.Storage/storageAccounts",
       "location": "[parameters('location')]",
@@ -187,7 +186,6 @@
       "kind": "Storage"
     },
     {
-      "condition": "[equals(parameters('newOrExisting'), 'new')]",
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[parameters('availabilitySetName')]",
       "apiVersion": "2019-07-01",
