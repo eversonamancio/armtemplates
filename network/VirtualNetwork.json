@@ -134,7 +134,6 @@
       }
     },
     {
-      "condition": "[equals(parameters('newOrExisting'),'new')]",
       "type": "Microsoft.Network/bastionHosts",
       "name": "[parameters('bastionHostName')]",
       "apiVersion": "2019-12-01",
@@ -142,7 +141,6 @@
       "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIpAddresses', variables('public-ip-address-name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('bastionSubnetName'))]"
       ],
       "properties": {
         "ipConfigurations": [
