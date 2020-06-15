@@ -184,7 +184,7 @@
       "tags": {
         "displayName": "Diagnostic Storage Account"
       },
-      "kind": "StorageV2"
+      "kind": "StorageV2" 
     },
     {
       "condition": "[equals(parameters('newOrExisting'), 'new')]",
