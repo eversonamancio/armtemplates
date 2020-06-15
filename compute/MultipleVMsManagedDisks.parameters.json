@@ -15,7 +15,7 @@
             "value": "labsharedrg"
         },
         "diagnosticStorageAccountName": {
-            "value": "[concat('stgdiag', uniqueString(resourceGroup().id))]"
+            "value": "stgdiag011001"
         },
         "virtualMachineAdminUserName": {
             "value": "evaman"
