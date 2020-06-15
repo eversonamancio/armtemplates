@@ -139,16 +139,21 @@
       "name": "[parameters('bastionHostName')]",
       "apiVersion": "2019-12-01",
       "location": "[parameters('location')]",
+      "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIpAddresses', variables('public-ip-address-name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('bastionSubnetName'))]"
+      ],
       "properties": {
         "ipConfigurations": [
           {
             "name": "IpConf",
             "properties": {
               "subnet": {
-                "id": "[reference(resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('bastionSubnetName')))]"
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('bastionSubnetName'))]"
               },
               "publicIPAddress": {
-                "id": "[reference(resourceId('Microsoft.Network/publicIpAddresses', variables('public-ip-address-name')))]"
+                "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('public-ip-address-name'))]"
               }
             }
           }
