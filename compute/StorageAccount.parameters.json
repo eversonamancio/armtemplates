@@ -6,7 +6,7 @@
             "value": "[concat('stgdiag', uniqueString(resourceGroup().id))]"
         },
         "newOrExisting": {
-            "value": "mew"
+            "value": "new"
         },
         "location": {
             "value": "[resourceGroup().location]"
