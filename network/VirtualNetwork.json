@@ -148,7 +148,7 @@
                 "id": "[reference(resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('bastionSubnetName')))]"
               },
               "publicIPAddress": {
-                "id": "[reference(resourceId('Microsoft.Network/publicIpAddresses', variables('public-ip-address-name')))]"
+                "id": "[reference(resourceId('Microsoft.Network/publicIpAddresses', variables('public-ip-address-name')),'2019-12-01')]"
               }
             }
           }
