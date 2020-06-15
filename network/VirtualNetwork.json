@@ -134,8 +134,8 @@
       }
     },
     {
-      "condition": "[equals(parameters('newOrExisting'),'new')]",
       "apiVersion": "2019-12-01",
+      "condition": "[equals(parameters('newOrExisting'),'new')]",
       "type": "Microsoft.Network/bastionHosts",
       "name": "[parameters('bastionHostName')]",
       "location": "[parameters('location')]",
