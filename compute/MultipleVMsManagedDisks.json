@@ -179,20 +179,6 @@
   "resources": [
     {
       "condition": "[equals(parameters('newOrExisting'), 'new')]",
-      "name": "[parameters('diagnosticStorageAccountName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "location": "[parameters('location')]",
-      "apiVersion": "2019-06-01",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "tags": {
-        "displayName": "Diagnostic Storage Account"
-      },
-      "kind": "StorageV2"
-    },
-    {
-      "condition": "[equals(parameters('newOrExisting'), 'new')]",
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[parameters('availabilitySetName')]",
       "apiVersion": "2019-07-01",
@@ -257,7 +243,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": true,
-            "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagnosticStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+            "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('diagnosticStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
           }
         }
       }
