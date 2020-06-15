@@ -27,7 +27,7 @@
             "value": "vsu-abh01"
         },
         "location": {
-            "value": "[resourceGroup().location]"
+            "value": "East US"
         },
         "newOrExisting": {
             "value": "new"
