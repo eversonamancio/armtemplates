@@ -145,10 +145,10 @@
             "name": "IpConf",
             "properties": {
               "subnet": {
-                "id": "[reference(resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('bastionSubnetName')),'2019-12-01')]"
+                "id": "[reference(parameters('vnetName'), parameters('bastionSubnetName'))]"
               },
               "publicIPAddress": {
-                "id": "[reference(resourceId('Microsoft.Network/publicIpAddresses', variables('public-ip-address-name')),'2019-12-01')]"
+                "id": "[reference(variables('public-ip-address-name'))]"
               }
             }
           }
