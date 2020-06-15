@@ -9,7 +9,7 @@
             "value": "new"
         },
         "location": {
-            "value": "[resourceGroup().location]"
+            "value": "East US"
         }
     }
 }
