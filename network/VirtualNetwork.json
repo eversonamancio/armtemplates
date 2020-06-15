@@ -145,7 +145,7 @@
             "name": "IpConf",
             "properties": {
               "subnet": {
-                "id": "[reference(parameters('vnetName'), parameters('bastionSubnetName'))]"
+                "id": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('vnetName'), parameters('bastionSubnetName')),'2019-12-01')]"
               },
               "publicIPAddress": {
                 "id": "[reference(variables('public-ip-address-name'))]"
