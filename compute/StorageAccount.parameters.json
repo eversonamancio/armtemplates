@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "diagnosticStorageAccountName": {
-            "value": "[concat('stgdiag', uniqueString(resourceGroup().id))]"
+            "value": "stgdiag011001"
         },
         "newOrExisting": {
             "value": "new"
