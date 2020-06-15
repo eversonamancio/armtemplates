@@ -122,20 +122,14 @@
             "properties": {
               "addressPrefix": "[parameters('subnet2Prefix')]"
             }
+          },
+          {
+            "name": "[parameters('bastionSubnetName')]",
+            "properties": {
+              "addressPrefix": "[parameters('bastionSubnetPrefix')]"
+            }
           }
         ]
-      }
-    },
-    {
-      "apiVersion": "2019-12-01",
-      "type": "Microsoft.Network/virtualNetworks/subnets",
-      "name": "[concat(parameters('vnetName'), '/', parameters('bastionSubnetName'))]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
-      ],
-      "properties": {
-        "addressPrefix": "[parameters('bastionSubnetPrefix')]"
       }
     },
     {
