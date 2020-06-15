@@ -249,7 +249,6 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts/', parameters('diagnosticStorageAccountName'))]",
         "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1'))]"
       ]
     },
