@@ -238,7 +238,7 @@
           ]
         },
         "availabilitySet": {
-          "id": "[reference(resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName')))]"
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName'))]"
         },
         "diagnosticsProfile": {
           "bootDiagnostics": {
@@ -246,7 +246,12 @@
             "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('diagnosticStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
           }
         }
-      }
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticStorageAccountName'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1'))]"
+      ]
     },
     {
       "type": "Microsoft.Network/networkInterfaces",
