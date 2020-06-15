@@ -249,7 +249,7 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticStorageAccountName'))]",
+        "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('diagnosticStorageAccountName')),'2019-06-01')]",
         "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1'))]"
       ]
     },
