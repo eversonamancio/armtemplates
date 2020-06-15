@@ -1,0 +1,50 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "diagnosticStorageAccountName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Storage Account"
+        }
+      },
+      "newOrExisting": {
+        "type": "string",
+        "allowedValues": [
+          "new",
+          "existing"
+        ]
+      },
+      "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+          "description": "Location for all resources."
+        }
+      }
+    },
+    "functions": [
+    ],
+    "variables": {
+      },
+    "resources": [
+      {
+        "condition": "[equals(parameters('newOrExisting'), 'new')]",
+        "name": "[parameters('diagnosticStorageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "location": "[parameters('location')]",
+        "apiVersion": "2019-06-01",
+        "sku": {
+          "name": "Standard_LRS"
+        },
+        "tags": {
+          "displayName": "Diagnostic Storage Account"
+        },
+        "kind": "StorageV2"
+      }
+    ],
+    "outputs": {
+        
+    }
+  }
+  
