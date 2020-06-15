@@ -3,30 +3,30 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vaultName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the keyvault that contains the secret."
-            }
-        },
-        "secretName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the secret."
-            }
-        },
-        "vaultResourceGroupName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the resource group that contains the keyvault."
-            }
-        },
-        "vaultSubscription": {
-            "type": "string",
-            "defaultValue": "[subscription().subscriptionId]",
-            "metadata": {
-                "description": "The name of the subscription that contains the keyvault."
-            }
-        },
+      "type": "string",
+      "metadata": {
+        "description": "The name of the keyvault that contains the secret."
+      }
+    },
+    "secretName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the secret."
+      }
+    },
+    "vaultResourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the resource group that contains the keyvault."
+      }
+    },
+    "vaultSubscription": {
+      "type": "string",
+      "defaultValue": "[subscription().subscriptionId]",
+      "metadata": {
+        "description": "The name of the subscription that contains the keyvault."
+      }
+    },
     "virtualMachineAdminUserName": {
       "defaultValue": "evaman",
       "type": "string",
@@ -184,7 +184,7 @@
       "tags": {
         "displayName": "Diagnostic Storage Account"
       },
-      "kind": "StorageV2" 
+      "kind": "StorageV2"
     },
     {
       "condition": "[equals(parameters('newOrExisting'), 'new')]",
@@ -242,7 +242,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1'))]"
+              "id": "[reference(resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1')))]"
             }
           ]
         },
@@ -255,11 +255,7 @@
             "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagnosticStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
           }
         }
-      },
-      "dependsOn": [
-        "[concat('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-nic1'))]"
-      ]
+      }
     },
     {
       "type": "Microsoft.Network/networkInterfaces",

@@ -87,6 +87,7 @@
   },
   "resources": [
     {
+      "condition": "[equals(parameters('newOrExisting'),'new')]",
       "apiVersion": "2019-12-01",
       "type": "Microsoft.Network/publicIpAddresses",
       "name": "[variables('public-ip-address-name')]",
